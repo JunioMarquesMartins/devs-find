@@ -32,8 +32,9 @@ module.exports = {
                 github_username,
                 name,
                 avatar_url,
+                bio,
                 techs: techsArray,
-                location
+                location   
             });
         }
     
