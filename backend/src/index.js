@@ -1,11 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const http = require('http');
 const routes = require('./routes');
+const { setupWebsocket } = require('./websocket');
 
 const app = express();
+const server = http.Server(app);
 
-mongoose.connect('mongodb+srv://<user>:<senha>@cluster0-jghfd.mongodb.net/week10?retryWrites=true&w=majority', {
+setupWebsocket(server);
+
+mongoose.connect('mongodb+srv://<userName>:<password>@cluster0-jghfd.mongodb.net/week10?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -14,19 +19,7 @@ mongoose.connect('mongodb+srv://<user>:<senha>@cluster0-jghfd.mongodb.net/week10
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-app.listen(3333);
-
-
-
-// Metodos HTTP: GET, POST, PUT, DELETE
-
-// Tipos de parâmetros:
-
-// Query Params: request.query (Filtros, ordenaçao, paginaçao, ...);
-// Route Params: reuqest.params (Identificar um recurso na añteraçao ou remoçao);
-// Body request.body (Dados para criaçao ou alteraçao de um registro);
-
-// MongoDB (Nao-relacional)
+server.listen(3333);
 
 
 
