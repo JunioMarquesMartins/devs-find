@@ -1,5 +1,5 @@
 ## devs-find
-### Aplicación full-stack (buscador de devs) omniStack:
+### Aplicación Full Stack (buscador de devs) omniStack:
 - React Native
 - ReactJs
 - Node js
